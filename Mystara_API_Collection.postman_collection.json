@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "mystara-api-collection",
+		"name": "Mystara API Collection",
+		"description": "Complete API collection for Mystara microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Seller Service",
+			"item": [
+				{
+					"name": "Theme Management",
+					"item": [
+						{
+							"name": "Create Theme",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Gaming\",\n  \"description\": \"Gaming themed products\",\n  \"category\": \"Entertainment\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/themes",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "themes"]
+								}
+							}
+						},
+						{
+							"name": "Get All Themes",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8081/api/themes",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "themes"]
+								}
+							}
+						},
+						{
+							"name": "Get Theme by ID",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8081/api/themes/:themeId",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "themes", ":themeId"],
+									"variable": [
+										{
+											"key": "themeId",
+											"value": ""
+										}
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Product Management",
+					"item": [
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"sellerId\": \"seller123\",\n  \"name\": \"Gaming Mouse\",\n  \"description\": \"High-performance gaming mouse\",\n  \"price\": 49.99,\n  \"stock\": 100,\n  \"themeId\": \"{{themeId}}\",\n  \"images\": [\"https://example.com/mouse.jpg\"],\n  \"status\": \"ACTIVE\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "products"]
+								}
+							}
+						},
+						{
+							"name": "Get All Products",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8081/api/products",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "products"]
+								}
+							}
+						},
+						{
+							"name": "Get Products by Theme",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8081/api/products/theme/:themeId",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "products", "theme", ":themeId"],
+									"variable": [
+										{
+											"key": "themeId",
+											"value": ""
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "Reduce Stock",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "5"
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/products/:productId/reduce-stock",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "products", ":productId", "reduce-stock"],
+									"variable": [
+										{
+											"key": "productId",
+											"value": ""
+										}
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Purchase Requests",
+					"item": [
+						{
+							"name": "Get Pending Requests",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Seller-Id",
+										"value": "seller123"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/requests/pending",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "requests", "pending"]
+								}
+							}
+						},
+						{
+							"name": "Approve Request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Seller-Id",
+										"value": "seller123"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/requests/:requestId/approve",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "requests", ":requestId", "approve"],
+									"variable": [
+										{
+											"key": "requestId",
+											"value": ""
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "Reject Request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Seller-Id",
+										"value": "seller123"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"reason\": \"Out of stock\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/requests/:requestId/reject",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8081",
+									"path": ["api", "requests", ":requestId", "reject"],
+									"variable": [
+										{
+											"key": "requestId",
+											"value": ""
+										}
+									]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Buyer Service",
+			"item": [
+				{
+					"name": "Product Browsing",
+					"item": [
+						{
+							"name": "Get All Available Products",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8082/api/products",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "products"]
+								}
+							}
+						},
+						{
+							"name": "Get Products by Theme",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8082/api/products/theme/:themeId",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "products", "theme", ":themeId"],
+									"variable": [
+										{
+											"key": "themeId",
+											"value": ""
+										}
+									]
+								}
+							}
+						},
+						{
+							"name": "Search Products",
+							"request": {
+								"method": "GET",
+								"url": {
+									"raw": "http://localhost:8082/api/products/search?name=gaming",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "products", "search"],
+									"query": [
+										{
+											"key": "name",
+											"value": "gaming"
+										}
+									]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "Purchase Requests",
+					"item": [
+						{
+							"name": "Create Purchase Request",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Buyer-Id",
+										"value": "buyer123"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2,\n  \"message\": \"Please approve this purchase request\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8082/api/requests",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "requests"]
+								}
+							}
+						},
+						{
+							"name": "Get All Requests",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Buyer-Id",
+										"value": "buyer123"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8082/api/requests",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "requests"]
+								}
+							}
+						},
+						{
+							"name": "Get Approved Requests",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Buyer-Id",
+										"value": "buyer123"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8082/api/requests/approved",
+									"protocol": "http",
+									"host": ["localhost"],
+									"port": "8082",
+									"path": ["api", "requests", "approved"]
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cart Service",
+			"item": [
+				{
+					"name": "Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/cart",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8083",
+							"path": ["api", "cart"]
+						}
+					}
+				},
+				{
+					"name": "Clear Cart",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/cart",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8083",
+							"path": ["api", "cart"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Payment Service",
+			"item": [
+				{
+					"name": "Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cartId\": \"{{cartId}}\",\n  \"items\": [\n    {\n      \"productId\": \"{{productId}}\",\n      \"productName\": \"Gaming Mouse\",\n      \"quantity\": 2,\n      \"price\": 49.99,\n      \"sellerId\": \"seller123\"\n    }\n  ],\n  \"amount\": 99.98,\n  \"currency\": \"USD\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8084",
+							"path": ["api", "payments"]
+						}
+					}
+				},
+				{
+					"name": "Confirm Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paymentIntentId\": \"{{stripePaymentIntentId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments/:paymentId/confirm",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8084",
+							"path": ["api", "payments", ":paymentId", "confirm"],
+							"variable": [
+								{
+									"key": "paymentId",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Payments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8084/api/payments",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8084",
+							"path": ["api", "payments"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Complete Flow",
+			"item": [
+				{
+					"name": "1. Create Theme",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Gaming\",\n  \"description\": \"Gaming products\",\n  \"category\": \"Entertainment\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/themes",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8081",
+							"path": ["api", "themes"]
+						}
+					}
+				},
+				{
+					"name": "2. Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"sellerId\": \"seller123\",\n  \"name\": \"Gaming Mouse\",\n  \"description\": \"High-performance gaming mouse\",\n  \"price\": 49.99,\n  \"stock\": 100,\n  \"themeId\": \"{{themeId}}\",\n  \"images\": [\"https://example.com/mouse.jpg\"],\n  \"status\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/products",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8081",
+							"path": ["api", "products"]
+						}
+					}
+				},
+				{
+					"name": "3. Create Purchase Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2,\n  \"message\": \"I would like to purchase this product\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8082/api/requests",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8082",
+							"path": ["api", "requests"]
+						}
+					}
+				},
+				{
+					"name": "4. Approve Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Seller-Id",
+								"value": "seller123"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/api/requests/:requestId/approve",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8081",
+							"path": ["api", "requests", ":requestId", "approve"],
+							"variable": [
+								{
+									"key": "requestId",
+									"value": ""
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "5. Get Cart",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8083/api/cart",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8083",
+							"path": ["api", "cart"]
+						}
+					}
+				},
+				{
+					"name": "6. Create Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Buyer-Id",
+								"value": "buyer123"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cartId\": \"{{cartId}}\",\n  \"items\": [\n    {\n      \"productId\": \"{{productId}}\",\n      \"productName\": \"Gaming Mouse\",\n      \"quantity\": 2,\n      \"price\": 49.99,\n      \"sellerId\": \"seller123\"\n    }\n  ],\n  \"amount\": 99.98,\n  \"currency\": \"USD\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8084",
+							"path": ["api", "payments"]
+						}
+					}
+				},
+				{
+					"name": "7. Confirm Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"paymentIntentId\": \"{{stripePaymentIntentId}}\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8084/api/payments/:paymentId/confirm",
+							"protocol": "http",
+							"host": ["localhost"],
+							"port": "8084",
+							"path": ["api", "payments", ":paymentId", "confirm"],
+							"variable": [
+								{
+									"key": "paymentId",
+									"value": ""
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "themeId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "productId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "requestId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "cartId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "paymentId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "stripePaymentIntentId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
+

@@ -1,0 +1,311 @@
+/* =======================
+   GLOBAL RESET
+======================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Poppins", sans-serif; */
+}
+
+body {
+  background: radial-gradient(circle at 25% 25%, #0a0f1c 0%, #0a0f24 40%, #080d18 100%);
+  color: #e9ecf7;
+  overflow-x: hidden;
+}
+
+/* =======================
+   PAGE STRUCTURE
+======================= */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* HALO-like glow background */
+.landing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 60% 40%,
+      rgba(0, 198, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(circle at 30% 70%, rgba(180, 60, 255, 0.12), transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* =======================
+   HERO SECTION
+======================= */
+.landing-hero {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content {
+  max-width: 600px;
+  width: 100%;
+  background: rgba(30, 40, 60, 0.25);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 0 40px rgba(0, 255, 213, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.hero-content:hover {
+  transform: translateY(-4px);
+}
+
+/* =======================
+   LOGO & TEXT
+======================= */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.logo h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #00e1ff, #a87cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(0, 225, 255, 0.25);
+}
+
+.tagline {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #bcd0f2;
+  margin-bottom: 0.8rem;
+}
+
+.description {
+  color: #cfd6e9;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* =======================
+   ROLE SELECTOR
+======================= */
+.role-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.role-btn {
+  padding: 0.8rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #b8c2e0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+}
+
+.role-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0, 180, 255, 0.3);
+}
+
+.role-btn.active {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 198, 255, 0.4);
+}
+
+/* =======================
+   AUTH BUTTONS
+======================= */
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.9rem 1.6rem;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00b6ff, #0088ff);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 150, 255, 0.25);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.45);
+}
+
+.btn-secondary {
+  background: linear-gradient(90deg, #b356ff, #ff66c4);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 102, 196, 0.25);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 25px rgba(255, 102, 196, 0.45);
+}
+
+/* =======================
+   GLASS MODALS
+======================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.modal-content {
+  background: rgba(25, 35, 60, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 0 35px rgba(0, 255, 200, 0.08);
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(14px);
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+  color: #d9e6ff;
+  letter-spacing: 0.5px;
+}
+
+/* =======================
+   FORM STYLES
+======================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #a5b5d8;
+}
+
+.form-group input {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  color: #000; /* makes entered text visible */
+caret-color: #00f0ff; /* optional: bright cursor color for visibility */
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #00c6ff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
+}
+
+/* =======================
+   MODAL BUTTONS & CLOSE
+======================= */
+.modal-content .btn-primary {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.5rem;
+  color: #ccc;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 600px) {
+  .hero-content {
+    padding: 2rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  .logo h1 {
+    font-size: 2rem;
+  }
+
+  .role-selector {
+    flex-direction: column;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+  }
+}

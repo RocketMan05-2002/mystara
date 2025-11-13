@@ -1,0 +1,91 @@
+.theme-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  background: rgba(20, 25, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.35s ease;
+  box-shadow: 0 0 20px rgba(90, 160, 255, 0.15);
+  color: #f4f7ff;
+  text-align: center;
+  min-height: 230px;
+}
+
+/* Hover: gentle lift and glow */
+.theme-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 35px rgba(110, 190, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Halo light shimmer */
+.theme-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255,255,255,0.08), transparent 70%);
+  opacity: 0.6;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.theme-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a8cbff;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 6px rgba(140, 200, 255, 0.5));
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-card:hover .theme-icon {
+  transform: scale(1.1) rotate(6deg);
+  color: #d3e7ff;
+}
+
+/* ===== Text Readability Fixes ===== */
+.theme-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(150, 200, 255, 0.5);
+}
+
+.theme-description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(235, 245, 255, 0.95);
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.theme-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-products {
+  font-size: 0.9rem;
+  color: #9ec8ff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-shadow: 0 0 6px rgba(150, 220, 255, 0.4);
+}
+
+.theme-products:hover {
+  color: #cde7ff;
+  text-shadow: 0 0 10px rgba(180, 240, 255, 0.8);
+}

@@ -1,0 +1,356 @@
+/* 🌌 SellerRequests.css — Dark Halo Reach Theme Fix */
+
+/* Page Layout */
+.seller-requests-container {
+  background: radial-gradient(circle at 20% 20%, #0a0a0f 0%, #000000 100%);
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 7rem 2rem 2rem 2rem; /* ✅ Added top padding to avoid navbar collision */
+  font-family: 'Orbitron', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header */
+.requests-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.requests-header h1 {
+  font-size: 2rem;
+  color: #00ffb3;
+  text-shadow: 0 0 10px rgba(0, 255, 180, 0.5);
+}
+
+.requests-header p {
+  color: #a0aec0;
+  font-size: 0.95rem;
+}
+
+/* Stats Cards */
+.requests-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(20, 40, 30, 0.4);
+  border: 1px solid rgba(0, 255, 180, 0.2);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  color: #e2e8f0;
+  box-shadow: 0 0 10px rgba(0, 255, 150, 0.15);
+  div{
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.stat-card strong {
+  color: #00ffb3;
+  font-weight: 700;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.filter-tabs button {
+  background: rgba(0, 255, 180, 0.1);
+  border: 1px solid rgba(0, 255, 180, 0.3);
+  color: #00ffb3;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-tabs button.active,
+.filter-tabs button:hover {
+  background: rgba(0, 255, 180, 0.25);
+  box-shadow: 0 0 10px rgba(0, 255, 180, 0.4);
+}
+
+/* Requests List */
+.requests-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Request Card */
+.request-card {
+  background: rgba(15, 25, 20, 0.8);
+  border: 1px solid rgba(0, 255, 180, 0.2);
+  border-radius: 12px;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 0 15px rgba(0, 255, 150, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: 0.25s;
+}
+
+.request-card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Request Top */
+.request-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.status-badge.pending {
+  background: rgba(255, 200, 0, 0.15);
+  border: 1px solid rgba(255, 200, 0, 0.3);
+  color: #ffd65a;
+}
+
+.status-badge.approved {
+  background: rgba(0, 255, 150, 0.15);
+  border: 1px solid rgba(0, 255, 150, 0.4);
+  color: #00ffb3;
+}
+
+.status-badge.rejected {
+  background: rgba(255, 50, 50, 0.15);
+  border: 1px solid rgba(255, 70, 70, 0.4);
+  color: #ff7070;
+}
+
+.request-date {
+  color: #9ca3af;
+  font-size: 0.85rem;
+}
+
+/* Main Row Layout Fix */
+.request-main {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr 0.7fr;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 255, 180, 0.04);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+}
+
+.request-info h3 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.request-info p {
+  color: #a0aec0;
+  font-size: 0.9rem;
+}
+
+.request-quantity,
+.request-price {
+  text-align: center;
+}
+
+.request-quantity span,
+.request-price span {
+  display: block;
+  font-size: 0.75rem;
+  color: #a0aec0;
+}
+
+.request-quantity strong,
+.request-price strong {
+  color: #00ffb3;
+  font-size: 1rem;
+}
+
+/* Footer */
+.request-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-top: 1px solid rgba(0, 255, 180, 0.15);
+  padding-top: 0.8rem;
+}
+
+.buyer-info {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #e2e8f0;
+  div{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+  }
+}
+
+.buyer-info span {
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+.request-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: #b9e4d6;
+  background: rgba(0, 255, 180, 0.05);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+
+/* Actions */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.action-buttons button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.approve-btn {
+  background: rgba(0, 255, 150, 0.2);
+  color: #00ffb3;
+  border: 1px solid rgba(0, 255, 150, 0.4);
+}
+
+.approve-btn:hover {
+  background: rgba(0, 255, 150, 0.35);
+}
+
+.reject-btn {
+  background: rgba(255, 60, 60, 0.15);
+  color: #ff7070;
+  border: 1px solid rgba(255, 70, 70, 0.4);
+}
+
+.reject-btn:hover {
+  background: rgba(255, 70, 70, 0.25);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: rgba(15, 25, 20, 0.95);
+  border: 1px solid rgba(0, 255, 180, 0.25);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 480px;
+  color: #e2e8f0;
+  box-shadow: 0 0 20px rgba(0, 255, 180, 0.25);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #00ffb3;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #00ffb3;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  background: rgba(0, 255, 180, 0.05);
+  border: 1px solid rgba(0, 255, 180, 0.25);
+  border-radius: 8px;
+  color: #e2e8f0;
+  padding: 0.6rem;
+  resize: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.btn-secondary,
+.btn-danger {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a0aec0;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-danger {
+  background: rgba(255, 60, 60, 0.15);
+  border: 1px solid rgba(255, 70, 70, 0.4);
+  color: #ff7070;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 70, 70, 0.25);
+}

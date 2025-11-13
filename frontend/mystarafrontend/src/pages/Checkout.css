@@ -1,0 +1,140 @@
+.checkout-container {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #0d1117, #000);
+  color: #e5e7eb;
+  padding: 2rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #14b8a6;
+  border: 1px solid #14b8a6;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #14b8a6;
+  color: #000;
+}
+
+.checkout-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.checkout-form-section {
+  flex: 1;
+  min-width: 300px;
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(20, 184, 166, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.checkout-form-section h1 {
+  font-size: 1.8rem;
+  color: #14b8a6;
+  margin-bottom: 1.5rem;
+}
+
+.pay-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #14b8a6, #06b6d4);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  box-shadow: 0 0 20px #14b8a6;
+  transform: scale(1.02);
+}
+
+.pay-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.order-summary-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.summary-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 25px rgba(20, 184, 166, 0.1);
+  color: #f3f4f6;
+}
+
+.summary-card h2 {
+  color: #14b8a6;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+}
+
+.order-items {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.order-item-info h4 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.order-item-info p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.order-item-price {
+  font-weight: bold;
+}
+
+.summary-totals {
+  margin-top: 1rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.summary-row.total {
+  font-size: 1.2rem;
+  color: #14b8a6;
+  font-weight: bold;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #14b8a6;
+  padding-top: 4rem;
+}
